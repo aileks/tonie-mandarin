@@ -15,13 +15,11 @@
 
     /* Linting */
     "strict": true,
-    "strictNullChecks": true,
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true,
-    "noPropertyAccessFromIndexSignature": true
+    "noUncheckedSideEffectImports": true
   },
   "include": ["vite.config.ts"]
 }
