@@ -1,5 +1,9 @@
 # Tonie Mandarin
 
+### Current progress:
+
+![Preview](./preview.png)
+
 ### To-do:
 
 - [ ] Styling
