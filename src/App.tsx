@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from 'react';
+import './App.css';
+import tonesData from './assets/tones.json';
+import audioData from './assets/audio.json';
+
+type Tones = {
+  [syllable: string]: {
+    [tone: string]: string;
+  };
+};
+
+type Audio = {
+  [key: string]: string;
+};
+
+type ToneAudioMap = {
+  syllable: string;
+  tone: number;
+  pinyin: string;
+  audio: string | null;
+};
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [toneAudioMap, setToneAudioMap] = useState<ToneAudioMap[]>([]);
+
+  useEffect(() => {
+    const tonesWithAudio: ToneAudioMap[] = Object.entries(
+      tonesData as Tones
+    ).flatMap(([syllable, tones]) =>
+      Object.entries(tones).map(([tone, pinyin]) => ({
+        syllable,
+        tone: parseInt(tone, 10),
+        pinyin,
+        audio: (audioData as Audio)[`${syllable}${tone}`] || null,
+      }))
+    );
+
+    setToneAudioMap(tonesWithAudio);
+  }, []);
 
   return (
-    <>
+    <div>
+      <h1>Tonie</h1>
+
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {toneAudioMap.map(({ syllable, tone, pinyin, audio }) => (
+          <h2 key={`${syllable}${tone}`}>
+            <p>{pinyin}</p>
+            {audio ?
+              <audio controls>
+                <source
+                  src={audio}
+                  type='audio/mpeg'
+                />
+                Your browser does not support the audio element.
+              </audio>
+            : <span>Audio not available</span>}
+          </h2>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
