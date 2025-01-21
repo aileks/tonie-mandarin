@@ -7,6 +7,13 @@
 ### To-do:
 
 - [ ] Styling
+- [ ] Add limit to incorrect answers
 - [x] Map tones with audio URLs
-- [ ] Create randomized tone/pinyin guessing
+- [x] Create randomized tone/pinyin guessing
+- [ ] Track both correct and incorrect answers
 - [ ] Error handling
+
+### Possible features:
+
+- User accounts
+- Site themes
