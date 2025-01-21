@@ -7,6 +7,7 @@ import ToneQuiz from './components/ToneQuiz';
 export default function App() {
   return (
     <div>
+      <h1>Welcome to Tonie!</h1>
       {/* <AudioDisplay */}
       {/*   audioData={audioData} */}
       {/*   toneData={toneData} */}

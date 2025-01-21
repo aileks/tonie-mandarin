@@ -34,26 +34,20 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
     // Get all syllables with the same base
     const allChoices = syllables.filter(syllable => syllable.startsWith(base));
 
-    // If there are not enough choices from the same base, add random syllables
     let shuffledChoices = [
       ...allChoices.filter(choice => choice !== correctAnswer),
     ];
+
     while (shuffledChoices.length < 3) {
       const randomChoice =
         syllables[Math.floor(Math.random() * syllables.length)];
-      if (
-        !shuffledChoices.includes(randomChoice) &&
-        randomChoice !== correctAnswer
-      ) {
-        shuffledChoices.push(randomChoice);
-      }
+      shuffledChoices.push(randomChoice);
     }
 
     // Ensure the correct answer is included
     shuffledChoices = shuffledChoices.slice(0, 3);
     shuffledChoices.push(correctAnswer);
 
-    // Shuffle the final options
     const finalChoices = shuffledChoices.sort(() => 0.5 - Math.random());
 
     setCorrectAnswer(correctAnswer);
@@ -112,9 +106,11 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
   return (
     <div>
       <audio ref={audioRef} />
-      <h1>Mandarin Tone Quiz</h1>
-      <p>Question {currentQuestion + 1}</p>
+
+      <h3>Which tone do you hear?</h3>
+
       <button onClick={playAudio}>Play Audio</button>
+
       <div>
         {choices.map(choice => (
           <button
@@ -134,6 +130,7 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
           </button>
         ))}
       </div>
+
       {isAnsweredCorrectly && (
         <div>
           <p>Correct!</p>
@@ -145,6 +142,7 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
           <p>Incorrect! Try again.</p>
         </div>
       )}
+
       <p>Score: {score}</p>
     </div>
   );
