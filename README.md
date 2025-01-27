@@ -1,5 +1,10 @@
 # Tonie Mandarin
 
+## What is this?
+
+The goal of this project is to create a tonal recognition site for those learning Mandarin.
+The basic idea is a syllable will be played and the user must match what they hear with correct tone.
+
 ### Current progress:
 
 ![Preview](./preview.png)
