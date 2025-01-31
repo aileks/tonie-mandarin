@@ -70,7 +70,7 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
       if (!isAnsweredCorrectly) {
         setScore(score + 1);
       }
-      setIsAnsweredCorrectly(true); // Lock the question as answered correctly
+      setIsAnsweredCorrectly(true);
     }
   };
 

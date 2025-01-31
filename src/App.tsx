@@ -19,16 +19,18 @@ export default function App() {
         />
       </main>
 
-      <footer className='absolute bottom-1 text-lg right-0 left-0 text-center'>
-        <a
-          href='https://github.com/aileks/tonie-mandarin'
-          target='_blank'
-          rel='noopener noreferrer'
-          className='text-sm font-bold text-gray-700 transform rotate-1 inline-flex items-center gap-2 border-2 border-black bg-white px-3 py-1 shadow-[2px_2px_0_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all will-change-auto'
-        >
-          <Github size={16} />
-          View on GitHub
-        </a>
+      <footer className='fixed bottom-4 left-0 right-0 text-center'>
+        <div className='inline-flex items-center gap-4'>
+          <a
+            href='https://github.com/aileks/tonie-mandarin'
+            target='_blank'
+            rel='noopener noreferrer'
+            className='text-sm font-bold text-gray-700 transform rotate-1 inline-flex items-center gap-2 border-2 border-black bg-white px-3 py-1 shadow-[2px_2px_0_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all will-change-auto'
+          >
+            <Github size={16} />
+            View on GitHub
+          </a>
+        </div>
       </footer>
     </div>
   );
