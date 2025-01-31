@@ -104,27 +104,32 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
   };
 
   return (
-    <div className='space-y-8'>
+    <div className='space-y-6 sm:space-y-8'>
       <audio ref={audioRef} />
 
-      <h2 className='text-4xl font-bold text-purple-700 transform -rotate-1'>
+      <h2 className='text-2xl sm:text-3xl md:text-4xl font-bold text-purple-700 transform -rotate-1 will-change-transform'>
         Which tone do you hear?
       </h2>
 
-      <button
-        onClick={playAudio}
-        className='bg-green-400 text-black text-2xl font-bold py-4 px-8 border-4 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all'
-      >
-        Play Audio
-      </button>
+      <div className='flex flex-col sm:flex-row justify-between items-center gap-4'>
+        <button
+          onClick={playAudio}
+          className='w-full sm:w-auto bg-green-400 text-black text-xl sm:text-2xl font-bold py-3 sm:py-4 px-6 sm:px-8 border-4 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all'
+        >
+          Play Audio
+        </button>
+        <p className='text-2xl sm:text-3xl font-black bg-white border-4 border-black p-2 sm:p-4 shadow-[4px_4px_0_0_rgba(0,0,0,1)]'>
+          Score: <span className='text-red-600'>{score}</span>
+        </p>
+      </div>
 
-      <div className='grid grid-cols-2 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
         {choices.map(choice => (
           <button
             key={choice}
             onClick={() => handleChoice(choice)}
             disabled={isAnsweredCorrectly}
-            className={`text-3xl font-bold py-6 px-4 border-4 border-black ${
+            className={`text-2xl sm:text-3xl font-bold py-4 sm:py-6 px-4 border-4 border-black ${
               userSelection === choice ?
                 choice === correctAnswer ?
                   'bg-green-400'
@@ -143,10 +148,10 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
 
       {isAnsweredCorrectly && (
         <div className='bg-green-200 border-4 border-black p-4 shadow-[4px_4px_0_0_rgba(0,0,0,1)]'>
-          <p className='text-2xl font-bold mb-4'>Correct!</p>
+          <p className='text-xl sm:text-2xl font-bold mb-4'>Correct!</p>
           <button
             onClick={nextQuestion}
-            className='bg-blue-400 text-white text-xl font-bold py-2 px-6 border-4 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all'
+            className='w-full sm:w-auto bg-blue-400 text-white text-lg sm:text-xl font-bold py-2 px-6 border-4 border-black shadow-[4px_4px_0_0_rgba(0,0,0,1)] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all'
           >
             Next Question
           </button>
@@ -154,13 +159,9 @@ const ToneQuiz: React.FC<ToneQuizProps> = ({ audioData, toneData }) => {
       )}
       {!isAnsweredCorrectly && userSelection && (
         <div className='bg-red-200 border-4 border-black p-4 shadow-[4px_4px_0_0_rgba(0,0,0,1)]'>
-          <p className='text-2xl font-bold'>Incorrect! Try again.</p>
+          <p className='text-xl sm:text-2xl font-bold'>Incorrect! Try again.</p>
         </div>
       )}
-
-      <p className='text-3xl font-black'>
-        Score: <span className='text-red-600'>{score}</span>
-      </p>
     </div>
   );
 };
