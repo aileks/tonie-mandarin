@@ -5,7 +5,7 @@ import { Github } from 'lucide-react';
 
 export default function App() {
   return (
-    <div className='min-h-screen bg-yellow-300 p-4 sm:p-8'>
+    <div className='font-sans min-h-screen bg-yellow-300 p-4 sm:p-8'>
       <header className='mb-4 sm:mb-10'>
         <h1 className='text-4xl sm:text-6xl md:text-8xl font-black text-red-600 transform -rotate-2 mb-2 sm:mb-4 will-change-transform'>
           Tonie Mandarin!
