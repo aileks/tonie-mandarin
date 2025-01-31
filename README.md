@@ -11,7 +11,7 @@ The basic idea is a syllable will be played and the user must match what they he
 
 ### To-do:
 
-- [ ] Styling
+- [x] Styling
 - [ ] Add limit to incorrect answers
 - [x] Map tones with audio URLs
 - [x] Create randomized tone/pinyin guessing
@@ -22,3 +22,4 @@ The basic idea is a syllable will be played and the user must match what they he
 
 - User accounts
 - Site themes
+- Full Mandarin translation
